@@ -1,0 +1,41 @@
+name: Build and Deploy Jekyll site
+
+on:
+  push:
+    branches:
+      - main   # mainブランチが更新されたら実行
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # Gemfileに合わせて変更
+
+      - name: Install dependencies
+        run: |
+          gem install bundler
+          bundle install
+
+      - name: Build the site with Jekyll
+        run: bundle exec jekyll build -d _site
+
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: gh-pages
+          # Optional: mainブランチの履歴を削除せずに更新したい場合は以下
+          # keep_files: true
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]

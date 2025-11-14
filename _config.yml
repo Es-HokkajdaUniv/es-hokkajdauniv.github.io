@@ -1,0 +1,47 @@
+# meta
+lsi: false
+safe: true
+baseurl: ""
+source: ./
+lang: ja
+title: 北海道大学エスペラント研究会
+description: Esperanto-Rondo de Hokkajda Universitato. 世界共通語エスペラントを学ぶ北大非公認サークルのホームページです。活動内容や北大エスペラント史などについてご紹介します。
+locale: ja_JP
+twitter:
+  username: Es_HokkajdaUniv
+  card: summary
+
+# social.html
+email: esperanto.hokudai@gmail.com
+github_username: Es-HokkajdaUniv
+mastodon:
+  - username: Es_HokkajdaUniv
+    instance: fedibird.com
+twitter_username: Es_HokkajdaUniv
+
+incremental: false
+highlighter: rouge
+permalink: pretty
+
+# defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+  - scope:
+      path: ""
+    values:
+      image: "/assets/img/maskoto.png"
+header_pages:
+  - index.md
+  - pri-eo.md
+  - historio.md
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
