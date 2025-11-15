@@ -7,7 +7,7 @@
   {% if page.layout == 'home' %}
   <title>{{ site.title[lang] }}</title>
   {% else %}
-  <title>{{ page.title[lang] }} | {{ site.title[lang] }}</title>
+  <title>{{ page.title }} | {{ site.title[lang] }}</title>
   {% endif %}
   {%- seo title=false -%}
   <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
