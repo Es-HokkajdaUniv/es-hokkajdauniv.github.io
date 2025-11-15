@@ -2,17 +2,17 @@
   <data class="u-url" href="{{ "/" | relative_url }}"></data>
 
   <div class="wrapper">
-
-    <h2 class="footer-heading">{{ site.title | escape }}</h2>
+    {% assign lang = page.lang | default: 'ja' %}
+    <h2 class="footer-heading">{{ site.title[lang] | escape }}</h2>
 
     <div class="footer-col-wrapper">
       <div class="footer-col footer-col-1">
         <ul class="contact-list">
           <li class="p-name">
             {%- if site.author -%}
-              {{ site.author | escape }}
+              {{ site.author[lang] | escape }}
             {%- else -%}
-              {{ site.title | escape }}
+              {{ site.title[lang] | escape }}
             {%- endif -%}
             </li>
             {%- if site.email -%}
@@ -26,7 +26,7 @@
       </div>
 
       <div class="footer-col footer-col-3">
-        <p>{{- site.description | escape -}}</p>
+        <p>{{- site.description[lang] | escape -}}</p>
       </div>
     </div>
 

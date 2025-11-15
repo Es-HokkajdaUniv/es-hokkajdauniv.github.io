@@ -1,4 +1,0 @@
----
-title: Pri Esperanto
----
-## エスペラントとは

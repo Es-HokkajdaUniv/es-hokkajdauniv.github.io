@@ -1,7 +1,9 @@
 ---
+lang: ja
 layout: home
-title: 北海道大学エスペラント研究会
-header_title: Hejme
+title: Home
+header_title: ホーム
+permalink: /
 ---
 ## 当会について
 

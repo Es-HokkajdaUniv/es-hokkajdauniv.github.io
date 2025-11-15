@@ -5,8 +5,14 @@ layout: default
 <div class="home">
 
   <figure>
-    <img src="./assets/img/maskoto.png" alt='Surprizita oranĝhara infano diranta "Ho!"' />
-    <figcaption>我らがマスコット. 名前はない. Ho!</figcaption>
+    <img src="/assets/img/maskoto.png" alt='Surprizita oranĝhara infano diranta "Ho!"' />
+    <figcaption>
+      {% if page.lang == 'ja' %}
+      我らがマスコット. 名前はない. Ho!
+      {% else %}
+      Nia maskoto. Neniu nomo. Ho!
+      {% endif %}
+    </figcaption>
   </figure>
 
   {{ content }}
