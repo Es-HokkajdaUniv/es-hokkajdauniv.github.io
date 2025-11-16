@@ -1,1 +1,1 @@
-url: "<%= ENV['CF_PAGES_URL'] %>"
+url: $CF_PAGES_URL
