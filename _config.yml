@@ -8,7 +8,7 @@ title:
   ja: 北海道大学エスペラント研究会
   eo: Esperanto-Rondo de Hokkajda Universitato
 description:
-  ja: 世界共通語エスペラントを学ぶ北大非公認サークルのホームページです. 活動内容や北大エスペラント史などについて紹介します.
+  ja: 世界共通語エスペラントを学ぶ北大非公認サークルのホームページです. 活動内容や北大エスペラント史などについてご紹介します.
   eo: La ĉefpaĝo de la Esperanto-Rondo de Hokkajda Universitato. Oni prezentas la agadojn kaj la historion de Esperanto ĉe la Hokkajda Universitato.
 twitter:
   username: Es_HokkajdaUniv
@@ -57,4 +57,3 @@ exclude:
   - README.md
 plugins:
   - jekyll-sitemap
-  - jekyll-seo-tag

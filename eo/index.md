@@ -5,6 +5,8 @@ title: Hejme
 ---
 ## Pri ni
 
+La Esperanto-Rondo de Hokkajda Universitato estas neoficiala grupo, kiu ĉefe konsistas el studentoj de Hokkajda universitato.
+
 ```yaml
 nomo: Esperanto-Rondo de Hokkajda Universitato
 loko: Sapporo, Hokkajdo, Japanio
