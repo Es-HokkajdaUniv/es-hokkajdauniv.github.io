@@ -1,6 +1,6 @@
 # meta
 lsi: false
-safe: true
+safe: false
 url: "https://es-hokkajdauniv.github.io"
 source: ./
 lang: ja
