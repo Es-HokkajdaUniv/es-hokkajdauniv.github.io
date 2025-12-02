@@ -1,0 +1,155 @@
+{% assign lang = page.lang | default: 'ja' -%}
+{%- if lang == 'ja'  %}
+{% assign placeholder = "ここにタイプしてください...&#13;&#10;例:" %}
+{%- assign btn-copy = 'コピー' -%}
+{%- assign btn-copied = 'コピー完了' -%}
+{%- assign copy-error = 'コピーに失敗しました' -%}
+{%- assign box-left = 'X-方式' -%}
+{%- assign box-right = '字上符付き文字' -%}
+{%- assign share = 'このテキストを投稿' -%}
+{%- endif -%}
+{%- if lang == 'eo' -%}
+{%- assign placeholder = "Tajpu ĉi tie...&#13;&#10;ekz.," -%}
+{%- assign btn-copy = 'kopii' -%}
+{%- assign btn-copied = 'Kopiita' -%}
+{%- assign copy-error = 'Kopio malsukcesis' -%}
+{%- assign box-left = 'X-sistemo' -%}
+{%- assign box-right = 'Ĉapelitaj literoj' -%}
+{%- assign share = 'Afiŝi ĉi tiun tekston ĉe:' -%}
+{%- endif %}
+<div class="container">
+  <div class="box-wrapper">
+    <div class="textbox-header">{{ box-left }}</div>
+    <textarea id="input-ascii" placeholder="{{ placeholder }} cx, gx, ux, les eauxx"></textarea>
+  </div>
+
+  <div class="box-wrapper">
+    <div class="textbox-header">{{ box-right }}</div>
+    <textarea id="output-esperanto" readonly></textarea>
+    
+    <div class="btn-controls">
+        <button id="btn-copy" class="btn-copy" onclick="copyText()">📋 {{ btn-copy }}</button>
+        <!--<div>{{ share }}</div>-->
+        <button class="btn-x" title="X (Twitter)" onclick="shareToX()">
+          <svg class="svg-icon"><use xlink:href="{{ '/assets/social-icons.svg#twitter' | relative_url }}" fill="#fff"></use></svg>
+        </button>
+        <button class="btn-bsky" title="Bluesky" onclick="shareToBsky()">
+          <svg class="svg-icon"><use xlink:href="{{ '/assets/social-icons.svg#bluesky' | relative_url }}" fill="#fff"></use></svg>
+        </button>
+        <button class="btn-misskey" title="Misskey" onclick="shareToMisskey()">
+          <svg class="svg-icon"><use xlink:href="{{ '/assets/social-icons.svg#misskey' | relative_url }}" fill="#fff"></use></svg>
+        </button>
+        <button class="btn-mastodon" title="Mastodon" onclick="shareToMastodon()">
+          <svg class="svg-icon"><use xlink:href="{{ '/assets/social-icons.svg#mastodon' | relative_url }}" fill="#fff"></use></svg>
+        </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  const inputBox = document.getElementById('input-ascii');
+  const outputBox = document.getElementById('output-esperanto');
+  const copyButton = document.getElementById('btn-copy');
+
+  // 変換マップの定義
+  const char_set = [
+    ["cx", "ĉ"],
+    ["Cx", "Ĉ"],
+    ["gx", "ĝ"],
+    ["Gx", "Ĝ"],
+    ["hx", "ĥ"],
+    ["Hx", "Ĥ"],
+    ["jx", "ĵ"],
+    ["Jx", "Ĵ"],
+    ["sx", "ŝ"],
+    ["Sx", "Ŝ"],
+    ["ux", "ŭ"],
+    ["Ux", "Ŭ"],
+    ["xx", "x"] //多言語テキストにおいて aux -> aŭ となるのを防ぐため auxx -> aux と変換
+  ];
+
+  // 文字変換関数
+  function convertToEsperanto(text) {
+    let result = text;
+    const tempPlaceholder = "\uFFFF"; // 内部処理用
+    const escapeRow = char_set.find(row => row[0] === "xx");
+    if (escapeRow) {
+      result = result.replaceAll(escapeRow[0], tempPlaceholder);
+    }
+    for (let i = 0; i < char_set.length; i++) {
+      const row = char_set[i];
+      const xStr = row[0];
+      const dest = row[1];
+      if (xStr === "xx") continue;
+      if (xStr) {
+        result = result.replaceAll(xStr, dest);
+      }
+    }
+    if (escapeRow) {
+      result = result.replaceAll(tempPlaceholder, escapeRow[1]);
+    }
+    return result;
+  }
+
+  // 入力イベントリスナー
+  inputBox.addEventListener('input', (e) => {
+    const inputText = e.target.value;
+    const convertedText = convertToEsperanto(inputText);
+    outputBox.value = convertedText;
+  });
+
+  // コピー機能
+  function copyText() {
+    const textToCopy = outputBox.value;
+    if (!textToCopy) return;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+    copyButton.textContent = '{{ btn-copied }}';
+      // 連続クリックを防止
+      copyButton.disabled = true;
+      // 2秒後に元の状態に
+      setTimeout(() => {
+          copyButton.textContent = '📋 {{ btn-copy }}';
+          copyButton.disabled = false;
+      }, 2000);
+    }).catch(err => {
+      console.error('{{ copy-error }}:', err);
+      alert('{{ copy-error }}');
+    });
+  }
+
+  // シェア機能 (X / Twitter)
+  function shareToX() {
+    const textToShare = outputBox.value;
+    if (!textToShare) {
+      return;
+    }
+    // URLエンコードしてツイート画面を開く
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(textToShare)}`;
+    window.open(tweetUrl, '_blank');
+  }
+  function shareToBsky() {
+    const textToShare = outputBox.value;
+    if (!textToShare) {
+      return;
+    }
+    const postURL = `https://bsky.app/intent/compose?text=${encodeURIComponent(textToShare)}`;
+    window.open(postURL, '_blank');
+  }
+  function shareToMisskey() {
+    const textToShare = outputBox.value;
+    if (!textToShare) {
+      return;
+    }
+    const postURL = `https://misskey-hub.net/share/?text=${encodeURIComponent(textToShare)}&visibility=public&localOnly=0&manualInstance=misskey.io`;
+    window.open(postURL, '_blank');
+  }
+  function shareToMastodon() {
+    const textToShare = outputBox.value;
+    if (!textToShare) {
+      return;
+    }
+    const postURL = `https://mastodonshare.com/?text=${encodeURIComponent(textToShare)}`;
+    window.open(postURL, '_blank');
+  }
+</script>

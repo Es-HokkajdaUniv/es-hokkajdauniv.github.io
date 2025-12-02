@@ -3,11 +3,10 @@
   margin: 3px 0;
   background-color: #F0F0F0;
   @media screen and (max-width: $on-palm) {
-    white-space: nowrap;
-    overflow-x: scroll;
+    overflow-x: auto;
     padding: 0 1em;
-    > .gloss__words {
-      width: 400px;
+    > * {
+      width: $on-palm;
     }
   }
 }

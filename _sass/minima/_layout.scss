@@ -215,10 +215,13 @@
     }
   }
 }
-
 .post-meta {
   flex: 0 0 7em;
   color: $grey-color;
+}
+.converter {
+  text-align: center;
+  display: flex;
 }
 /*
 .post-link {
