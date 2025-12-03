@@ -6,7 +6,7 @@
 {%- assign copy-error = 'コピーに失敗しました' -%}
 {%- assign box-left = 'X-方式' -%}
 {%- assign box-right = '字上符付き文字' -%}
-{%- assign share = 'このテキストを投稿' -%}
+{%- assign misskey-lang = 'ja' -%}
 {%- endif -%}
 {%- if lang == 'eo' -%}
 {%- assign placeholder = "Tajpu ĉi tie...&#13;&#10;ekz.," -%}
@@ -15,7 +15,7 @@
 {%- assign copy-error = 'Kopio malsukcesis' -%}
 {%- assign box-left = 'X-sistemo' -%}
 {%- assign box-right = 'Ĉapelitaj literoj' -%}
-{%- assign share = 'Afiŝi ĉi tiun tekston ĉe:' -%}
+{%- assign misskey-lang = 'en' -%}
 {%- endif %}
 <div class="container">
   <div class="box-wrapper">
@@ -29,7 +29,6 @@
     
     <div class="btn-controls">
         <button id="btn-copy" class="btn-copy" onclick="copyText()">📋 {{ btn-copy }}</button>
-        <!--<div>{{ share }}</div>-->
         <button class="btn-x" title="X (Twitter)" onclick="shareToX()">
           <svg class="svg-icon"><use xlink:href="{{ '/assets/social-icons.svg#twitter' | relative_url }}" fill="#fff"></use></svg>
         </button>
@@ -141,7 +140,7 @@
     if (!textToShare) {
       return;
     }
-    const postURL = `https://misskey-hub.net/share/?text=${encodeURIComponent(textToShare)}&visibility=public&localOnly=0&manualInstance=misskey.io`;
+    const postURL = `https://misskey-hub.net/{{ misskey-lang }}/share/?text=${encodeURIComponent(textToShare)}&visibility=public&localOnly=0&manualInstance=misskey.io`;
     window.open(postURL, '_blank');
   }
   function shareToMastodon() {

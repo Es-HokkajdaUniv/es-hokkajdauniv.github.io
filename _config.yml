@@ -54,6 +54,8 @@ exclude:
   - README.md
 plugins:
   - jekyll-sitemap
+sass:
+  style: compressed
 markdown: kramdown
 kramdown:
   footnote_backlink: "&#8617;&#xfe0e;"
