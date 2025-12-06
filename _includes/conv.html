@@ -128,6 +128,7 @@
     }
     else if (platform == "bsky") {
       postURL = `https://bsky.app/intent/compose?text=${encodedText}`;
+      // postURL = `bluesky://intent/compose?text=${encodedText}`;
     }
     else if (platform == "misskey") {
       postURL = `https://misskey-hub.net/{{ misskey-lang }}/share/?text=${encodedText}&visibility=public&localOnly=0&manualInstance=misskey.io`;
