@@ -282,7 +282,23 @@ pre {
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+/* サイドバーの基本設定 */
+.sidebar {
+  width: 200px; /* サイドバーの幅を指定 */
+  position: fixed; /* スクロールしてもついてくる設定（動かしたければ absolute） */
+  top: 100px;     /* 上からの位置（ヘッダーの高さ等に合わせて調整） */
+  
+  /* 左端からの位置計算：
+     画面中央(50%) から コンテンツ幅の半分を左に引き、
+     さらにサイドバー自身の幅と余白分を左に引く */
+  left: calc(50% - (#{$content-width} / 2) - 220px); 
+}
 
+@media screen and (max-width: #{$content-width + 500px}) {
+  .sidebar {
+    display: none;
+  }
+}
 
 /**
  * Clearfix

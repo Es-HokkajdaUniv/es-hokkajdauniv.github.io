@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: 'ja' }}">
-  {% include head.html %}
-  <body>
-    {% include header.html %}
-    <main class="page-content" aria-label="Content">
-      <div class="wrapper">
+{% include head.html %}
+
+<body>
+  {% include header.html %}
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <div class="js-toc-content">
+        {%- if page.lang == 'ja' -%}
+        <p class="last_modified_date">最終更新日：{{ page.last_modified_at | date: '%F %H:%M %:z' }}</p>
+        {%- else -%}
+        <p class="last_modified_date">Lasta ĝisdatigo: {{ page.last_modified_at | date: '%F %H:%M %:z' }}</p>
+        {%- endif -%}
         {{ content -}}
       </div>
-    </main>
-    {% include footer.html %}
-    <script src="{{ '/assets/js/header-anchor.js' | relative_url }}"></script>
-  </body>
+      <aside class="sidebar">
+        <div class="js-toc"></div>
+      </aside>
+    </div>
+  </main>
+  {% include footer.html %}
+  <script src="{{ '/assets/js/header-anchor.js' | relative_url }}"></script>
+  <script src="{{ '/assets/js/tocbot.min.js' | relative_url }}"></script>
+  <script>
+    tocbot.init({
+      // Where to render the table of contents.
+      tocSelector: '.js-toc',
+      // Where to grab the headings to build the table of contents.
+      contentSelector: '.js-toc-content',
+      // Which headings to grab inside of the contentSelector element.
+      headingSelector: 'h1, h2, h3, h4',
+      // For headings inside relative or absolute positioned containers within content.
+      orderedList: false,
+      collapseDepth: 4,
+      hasInnerContainers: true,
+    });
+  </script>
+</body>
+
 </html>

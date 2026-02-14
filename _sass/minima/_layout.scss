@@ -193,9 +193,29 @@
   padding: $spacing-unit 0;
   flex: 1;
 }
+.last_modified_date {
+  text-align: right;
+  color: $grey-color;
+  font-size: small;
+}
 
 .page-heading {
   @include relative-font-size(2);
+}
+
+.toc-list {
+  list-style: none !important;
+  margin: 0;
+  padding-left: 0;
+}
+
+.toc-list-item {
+  list-style: none !important;
+}
+
+.toc-list .toc-list {
+  padding-left: 15px;
+  list-style: none !important;
 }
 
 .post-list-heading {
