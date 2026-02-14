@@ -16,13 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
         </svg>
     `;
     header.appendChild(anchor);
-
-    header.style.cursor = "pointer";
-
-    header.addEventListener("click", (e) => {
-      if (e.target.closest(".header-anchor")) return;
-
-      location.hash = id;
-    });
   });
 });
