@@ -6,7 +6,20 @@ title: Hejme
 <!-- 以下、自由に記述してください -->
 ## Pri ni
 
-La Esperanto-Rondo de Hokkajda Universitato estas neoficiala grupo, kiu ĉefe konsistas el studentoj de Hokkajda Universitato.
+**Esperanto-Rondo de Hokkajda Universitato** estas studgrupo por lerni Esperanto. Ni estas neoficiala universitata grupo, konsistanta ĉefe el studentoj de la Hokkajda Universitato. Ankaŭ eksteruloj de la universitato estas bonvenaj partopreni.
+
+## Ĉefaj agadoj
+
+- Studkunvenoj de Esperanto
+- Okazigado de pulbazaro ĉe la universitata festivalo (ĉiujare en junio)
+- Eldonado de novaĵletero (neregule)
+
+| Anoj | 5 homoj |
+| Fondita en | 1919 |
+| Loko | Sapporo Kampuso de la Hokkajda Universitato |
+| Ofteco | unufoje en 1–2 monatoj |
+| retadreso | esperanto.hokudai@gmail\.com |
+| SNS | [Fediverse](https://fedibird.com/@Es_HokkajdaUniv), [Bluesky](https://bsky.app/profile/Es-HokkajdaUniv.fedibird.com.ap.brid.gy), [X (Twitter)](https://www.twitter.com/Es_HokkajdaUniv) |
 
 ```yaml
 nomo: Esperanto-Rondo de Hokkajda Universitato
