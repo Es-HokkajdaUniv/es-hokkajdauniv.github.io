@@ -1,0 +1,71 @@
+<h2>Tags</h2>
+<div id="tag-container"></div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const params = new URLSearchParams(window.location.search);
+  const tag = params.get("tag");
+  const container = document.getElementById("tag-container");
+
+  // 投稿データをJekyllから埋め込む
+  const posts = [
+    {% for post in site.posts %}
+      {
+        "title": {{ post.title | jsonify }},
+        "url": "{{ post.url | relative_url }}",
+        "tags": {{ post.tags | jsonify }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  // クエリに tag がない場合 → 全タグ一覧
+  if (!tag) {
+    const tagMap = {};
+
+    // タグごとに記事を集計
+    posts.forEach(post => {
+      post.tags.forEach(t => {
+        if (!tagMap[t]) tagMap[t] = [];
+        tagMap[t].push(post);
+      });
+    });
+
+    // タグを記事数の多い順にソート
+    const sortedTags = Object.keys(tagMap).sort((a, b) => {
+      const diff = tagMap[b].length - tagMap[a].length;
+      if (diff !== 0) return diff; // 記事数で降順
+      return a.localeCompare(b);   // 同数なら名前順
+    });
+
+    // タグ一覧をHTML化
+    container.innerHTML = `
+      <h3>All Tags</h3>
+      <ul class="tag-list">
+        ${sortedTags.map(t =>
+          `<li>
+            <a href="?tag=${encodeURIComponent(t)}">${t}</a>
+            <span class="count">(${tagMap[t].length})</span>
+          </li>`
+        ).join('')}
+      </ul>
+    `;
+    return;
+  }
+
+  // クエリに tag がある場合 → 該当記事のみ表示
+  const filtered = posts.filter(p => p.tags.includes(tag));
+
+  if (filtered.length === 0) {
+    container.innerHTML = `<p>No posts found with tag "<strong>${tag}</strong>".</p>`;
+    return;
+  }
+
+  container.innerHTML = `
+    <h3>Tag: ${tag}</h3>
+    <ul class="post-list">
+      ${filtered.map(p => `<li><a href="${p.url}">${p.title}</a></li>`).join('')}
+    </ul>
+    <p><a href="/tags">← Back to all tags</a></p>
+  `;
+});
+</script>

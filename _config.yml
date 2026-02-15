@@ -1,0 +1,62 @@
+# meta
+lsi: false
+safe: false
+url: "https://es-hokkajdauniv.github.io"
+source: ./
+lang: ja
+title:
+  ja: 北海道大学エスペラント研究会
+  eo: Esperanto-Rondo de Hokkajda Universitato
+description:
+  ja: 世界共通語エスペラントを学ぶ北大非公認サークルのホームページです. 活動内容や北大エスペラント史などについてご紹介します.
+  eo: La ĉefpaĝo de la Esperanto-Rondo de Hokkajda Universitato. Oni prezentas la agadojn kaj la historion de Esperanto ĉe la Hokkajda Universitato.
+twitter:
+  username: Es_HokkajdaUniv
+  card: summary
+google_analytics: G-4WD7T5F6GN
+
+# social links
+email: esperanto.hokudai@gmail.com
+github_username: Es-HokkajdaUniv
+mastodon:
+  - username: Es_HokkajdaUniv
+    instance: fedibird.com
+twitter_username: Es_HokkajdaUniv
+bluesky_username: Es-HokkajdaUniv
+note_username: es_hokkajdauniv
+
+incremental: false
+highlighter: rouge
+permalink: pretty
+
+# defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default"
+header_pages:
+  ja:
+    - ja/index.md
+    - ja/pri-eo.md
+    - ja/historio.md
+    - ja/conv.md
+  eo:
+    - eo/index.md
+    - eo/historio.md
+    - eo/conv.md
+exclude:
+  - README.md
+plugins:
+  - jekyll-sitemap
+  - jekyll-last-modified-at
+sass:
+  style: compressed
+markdown: kramdown
+kramdown:
+  footnote_backlink: "&#8617;&#xfe0e;"

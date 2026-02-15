@@ -1,0 +1,385 @@
+/**
+ * Reset some basic elements
+ */
+body, h1, h2, h3, h4, h5, h6,
+p, blockquote, pre, hr,
+dl, dd, ol, ul, figure {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/**
+ * Basic styling
+ */
+body {
+  font: $base-font-weight #{$base-font-size}/#{$base-line-height} $base-font-family;
+  color: $text-color;
+  background-color: $background-color;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-feature-settings: "kern" 1;
+     -moz-font-feature-settings: "kern" 1;
+       -o-font-feature-settings: "kern" 1;
+          font-feature-settings: "kern" 1;
+  font-kerning: normal;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+
+
+/**
+ * Set `margin-bottom` to maintain vertical rhythm
+ */
+h1, h2, h3, h4, h5, h6,
+p, blockquote, pre,
+ul, ol, dl, figure,
+%vertical-rhythm {
+  margin-bottom: $spacing-unit * 0.5;
+}
+
+
+
+/**
+ * `main` element
+ */
+main {
+  display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
+}
+
+
+
+/**
+ * Images
+ */
+img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
+/**
+ * Figures
+ */
+figure img {
+  display: block;
+  margin: 0 auto;
+}
+
+figcaption {
+  font-size: $small-font-size;
+  margin: 0.5em auto;
+  text-align: center;
+}
+
+
+
+/**
+ * Lists
+ */
+ul, ol {
+  margin-left: $spacing-unit;
+}
+
+li {
+  > ul,
+  > ol {
+    margin-bottom: 0;
+  }
+}
+
+
+
+/**
+ * Headings
+ */
+ h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+.header-anchor {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.35em;
+  opacity: 0.45;
+  text-decoration: none;
+}
+
+.header-anchor:hover {
+  opacity: 1;
+}
+
+/**
+ * Links
+ */
+a {
+  color: $brand-color;
+  text-decoration: none;
+
+  &:visited {
+    color: darken($brand-color, 15%);
+  }
+
+  &:hover {
+    color: $text-color;
+    text-decoration: underline;
+  }
+  .username {
+    margin-left: 5px;
+  }
+  .social-media-list &:hover {
+    text-decoration: none;
+
+    .username {
+      text-decoration: underline;
+    }
+  }
+}
+
+
+/**
+ * Blockquotes
+ */
+blockquote {
+  color: $grey-color;
+  border-left: 4px solid $grey-color-light;
+  padding-left: $spacing-unit * 0.5;
+  @include relative-font-size(1.125);
+  letter-spacing: -1px;
+  /*font-style: italic;*/
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+/**
+ * Textbox
+ */
+.textbox-header {
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  height: 170px;
+  min-height: 170px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 16px;
+  box-sizing: border-box; /* パディングを含める */
+}
+textarea:focus {
+  outline: none;
+  border-color: #009900;
+}
+
+/* Buttons */
+button {
+  padding: 8px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: opacity 0.2s;
+  > svg {
+    margin: 0 auto;
+  }
+}
+button:hover {
+  opacity: 0.8;
+}
+.btn-copy {
+  background-color: #e0e0e0;
+  color: #333;
+}
+.btn-x {
+  background-color: #0F1419;
+}
+.btn-bsky {
+  background-color: #0085FF;
+}
+.btn-misskey {
+  background-color: #86B300;
+}
+.btn-mastodon {
+  background-color: #6364FF;
+}
+.btn-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+
+/**
+ * Code formatting
+ */
+pre,
+code {
+  @include relative-font-size(0.9375);
+  border: 1px solid $grey-color-light;
+  border-radius: 3px;
+  background-color: #eef;
+}
+
+code {
+  padding: 1px 5px;
+}
+
+pre {
+  padding: 8px 12px;
+  overflow-x: auto;
+
+  > code {
+    border: 0;
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+
+
+/**
+ * Wrapper
+ */
+.wrapper {
+  max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit} * 2));
+  max-width:         calc(#{$content-width} - (#{$spacing-unit} * 2));
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $spacing-unit;
+  padding-left: $spacing-unit;
+  @extend %clearfix;
+
+  @include media-query($on-laptop) {
+    max-width: -webkit-calc(#{$content-width} - (#{$spacing-unit}));
+    max-width:         calc(#{$content-width} - (#{$spacing-unit}));
+    padding-right: $spacing-unit * 0.5;
+    padding-left: $spacing-unit * 0.5;
+  }
+}
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+  max-width: 900px;
+  justify-content: center;
+  margin-bottom: $spacing-unit;
+}
+.box-wrapper {
+  flex: 1;
+  min-width: 300px;
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+/* サイドバーの基本設定 */
+.sidebar {
+  width: 200px; /* サイドバーの幅を指定 */
+  position: fixed; /* スクロールしてもついてくる設定（動かしたければ absolute） */
+  top: 100px;     /* 上からの位置（ヘッダーの高さ等に合わせて調整） */
+  
+  /* 左端からの位置計算：
+     画面中央(50%) から コンテンツ幅の半分を左に引き、
+     さらにサイドバー自身の幅と余白分を左に引く */
+  left: calc(50% - (#{$content-width} / 2) - 220px); 
+}
+
+@media screen and (max-width: #{$content-width + 500px}) {
+  .sidebar {
+    display: none;
+  }
+}
+
+/**
+ * Clearfix
+ */
+%clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+
+/**
+ * Icons
+ */
+
+.svg-icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    fill: #{$grey-color};
+    vertical-align: text-top;
+}
+
+.social-media-list {
+  li + li {
+    padding-top: 5px;
+  }
+}
+
+
+
+/**
+ * Tables
+ */
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+.table-scrollable {
+  width: auto;
+  white-space: pre;
+}
+
+table {
+  margin-bottom: $spacing-unit;
+  width: auto;
+  text-align: $table-text-align;
+  color: lighten($text-color, 18%);
+  border-collapse: collapse;
+  border: 1px solid $grey-color-light;
+  tr {
+    &:nth-child(even) {
+      background-color: lighten($grey-color-light, 6%);
+    }
+  }
+  th, td {
+    padding: ($spacing-unit * 0.3333333333) ($spacing-unit * 0.5);
+  }
+  th {
+    background-color: lighten($grey-color-light, 3%);
+    border: 1px solid darken($grey-color-light, 4%);
+    border-bottom-color: darken($grey-color-light, 12%);
+  }
+  td {
+    border: 1px solid $grey-color-light;
+  }
+}
+
+/* 脚注エリア（footer）の直前に見出しを挿入 */
+.footnotes::before {
+  content: "脚注";   /* 表示したいテキスト */
+  display: block;    /* ブロック要素にして独立させる */
+  font-size: 1.5rem; /* h2相当のサイズ（適宜調整） */
+  font-weight: 500;  /* 既存のh2設定に合わせて調整 */
+  margin-bottom: $spacing-unit * 0.5; /* 既存の垂直リズムに合わせる */
+  padding-bottom: 5px;
+}
+
+/* 脚注エリア自体のマージン調整 */
+.footnotes {
+  margin-top: $spacing-unit * 2;
+}

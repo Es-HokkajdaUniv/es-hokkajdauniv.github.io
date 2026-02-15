@@ -1,0 +1,39 @@
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv='content-language' content="eo">
+  <meta name="generator" content="Jekyll v4.4.1" />
+  {%- assign lang = page.lang | default: 'ja' -%}
+  {% if page.layout == 'home' -%}
+  <title>{{ site.title[lang] }}</title>
+  <meta property="og:title" content="{{ site.title[lang] }}" />
+  <meta property="twitter:title" content="{{ site.title[lang] }}" />
+  {% else %}
+  <title>{{ page.title }} | {{ site.title[lang] }}</title>
+  <meta property="og:title" content="{{ page.title }} | {{ site.title[lang] }}" />
+  <meta property="twitter:title" content="{{ page.title }} | {{ site.title[lang] }}" />
+  {%- endif %}
+  <meta property="og:locale" content="{{ lang }}_JP" />
+  <meta name="description" content="{{ site.description[lang] }}" />
+  <meta property="og:description" content="{{ site.description[lang] }}"/>
+  <link rel="canonical" href="{{ page.url | absolute_url }}" />
+  <meta property="og:url" content="{{ page.url | absolute_url }}" />
+  <meta property="og:site_name" content="{{ site.title[lang] }}" />
+  <meta property="og:image" content="{{ 'assets/img/maskoto.webp' | absolute_url }}" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary" />
+  <meta property="twitter:image" content="{{ 'assets/img/maskoto.webp' | absolute_url }}" />
+  <meta name="twitter:site" content="@Es_HokkajdaUniv" />
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebSite","description":"{{ site.description[lang] }}","headline":"{{ page.title }}","image":"{{ 'assets/img/maskoto.webp' | absolute_url }}","name":"{{ site.title[lang] }}","url":"{{ page.url | absolute_url }}"}
+  </script>
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="stylesheet" href="{{ '/assets/main.css' | relative_url }}">
+  {%- if jekyll.environment == 'production' and site.google_analytics -%}
+    {%- include google-analytics.html -%}
+  {%- endif %}
+</head>
