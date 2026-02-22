@@ -173,6 +173,8 @@ Hokkajd-a Universitat-o hav-as tre bel-a-n kampus-o-n
 
 #### 接頭辞
 
+{: .table-scrollable}
+
 | 接頭辞 | 意味 | 例 |
 | :---- | :--- | :--|
 | bo- | 婚姻による親族関係 | patro 父 > bopatro 義父<br>filo 息子 > bofilo 婿 |
@@ -187,6 +189,8 @@ Hokkajd-a Universitat-o hav-as tre bel-a-n kampus-o-n
 | re- | 再び | lerni 学ぶ > relerni 復習する<br>veni 来る > reveni 戻る |
 
 #### 接尾辞
+
+{: .table-scrollable}
 
 | 接尾辞 | 意味 | 例 |
 | :---- | :--- | :--|
